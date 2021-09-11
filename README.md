@@ -2,6 +2,16 @@
 
 https://aws.amazon.com/blogs/developer/announcing-aws-cloud-development-kit-v2-developer-preview/
 
+#aws-cdk installation
+to install v1 version
+```
+npm install -g aws-cdk
+```
+To install v2 version
+```
+npm install -g aws-cdk@next
+```
+For python aws cdk installation please check requirements.txt file
 
 
 #App:
@@ -125,6 +135,8 @@ class ExistsVpcStack(cdk.Stack):
 
 #Bootstrap::
 ```
+cdk bootstrap --qualifier  second  --profile raj_pahal --trust 600290073582 --lookups true --trust-for-lookup 600290073582  -v --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' 
+
 cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
 cdk bootstrap --profile prod
 ```
@@ -136,5 +148,18 @@ aws cloudformation create-stack \
 ```
 
 * https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html
+* https://docs.aws.amazon.com/cdk/latest/guide/cli.html
 
+## Best practices
 
+* CDK applications should be organized into logical units, such as API, database, and monitoring resources, and optionally have a pipeline for automated deployments. 
+* The logical units should be implemented as constructs including the infrastructure (e.g. Amazon S3 buckets, Amazon RDS databases, Amazon VPC network), runtime code (e.g. AWS Lambda functions), and configuration code. 
+* Stacks define the deployment model of these logical units.
+* https://docs.aws.amazon.com/cdk/latest/guide/best-practices.html
+* https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html
+* You can tie together the services that make up your landing zone with AWS Control Tower, a high-level service configures and manages your entire multi-account system from a single user interface.
+* Using CDK Pipelines, the AWS CDK applications can then be deployed via a CI/CD account to testing, integration, and production environments (each isolated in its own AWS region and/or account) by merging the developers' code into your organization's canonical repository.
+* https://docs.aws.amazon.com/cdk/latest/guide/stack_how_to_create_multiple_stacks.html
+* https://docs.aws.amazon.com/cdk/latest/guide/get_context_var.html
+* https://docs.aws.amazon.com/cdk/latest/guide/videos.html
+* https://stackoverflow.com/questions/61515974/how-to-manage-multiple-environments-using-aws-cdk

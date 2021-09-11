@@ -2,7 +2,7 @@
 
 https://aws.amazon.com/blogs/developer/announcing-aws-cloud-development-kit-v2-developer-preview/
 
-#aws-cdk installation
+# aws-cdk installation
 to install v1 version
 ```
 npm install -g aws-cdk
@@ -14,14 +14,16 @@ npm install -g aws-cdk@next
 For python aws cdk installation please check requirements.txt file
 
 
-#App:
+# App:
+```
 class MyApp(App):
      def __init__(self):
          MyFirstStack(self, "hello-cdk")
 
 MyApp().synth()
-
-#Stack:
+```
+# Stack:
+```
 from aws_cdk.core import App, Construct, Stack
 
 # imagine these stacks declare a bunch of related resources
@@ -45,15 +47,16 @@ MyService(app, "beta")
 MyService(app, "prod", prod=True)
 
 app.synth()  
-
-#Environment:
+```
+# Environment:
+```
 env_EU = core.Environment(account="8373873873", region="eu-west-1")
 env_USA = core.Environment(account="2383838383", region="us-west-2")
 
 MyFirstStack(app, "first-stack-us", env=env_USA)
 MyFirstStack(app, "first-stack-eu", env=env_EU)
-
-#Resources:
+```
+# Resources:
 ```
 cluster = ecs.Cluster(self, "Cluster")
 service = ecs.Ec2Service(self, "Service", cluster=cluster)
@@ -75,7 +78,7 @@ ec2.Vpc.from_lookup(self, "PublicVpc",
     tags={"aws-cdk:subnet-type": "Public"})
 ```
 
-#Tags:
+# Tags:
 ```
 Tags.of(my_construct).add("tagname", "value",
     apply_to_launched_instances=False,
@@ -84,20 +87,20 @@ Tags.of(my_construct).add("tagname", "value",
     priority=100)
 ```
 
-#Parameters:
+# Parameters:
 
 ```
 cdk deploy MyStack YourStack --no-previous-parameters --parameters MyStack:uploadBucketName=UploadBucket --parameters YourStack:uploadBucketName=UpBucket
 cdk deploy MyStack YourStack --no-previous-parameters --parameters MyStack:uploadBucketName=UploadBucket --parameters YourStack:uploadBucketName=UpBucket
 ```
 
-#Assets:
+# Assets:
 https://docs.aws.amazon.com/cdk/latest/guide/assets.html
 
-#Permissions:
+# Permissions:
 https://docs.aws.amazon.com/cdk/latest/guide/permissions.html
 
-#Construct context
+# Construct context
 Context values can be provided to your AWS CDK app in six different ways:
 * Automatically from the current AWS account.
 * Through the --context option to the cdk command. (These values are always strings.)
@@ -106,7 +109,7 @@ Context values can be provided to your AWS CDK app in six different ways:
 * In the context key of your ~/.cdk.json file.
 * In your AWS CDK app using the construct.node.setContext() method.
 
-*Use the cdk context command to view and manage the information in your cdk.context.json file. 
+* Use the cdk context command to view and manage the information in your cdk.context.json file. 
 ```
 cdk context --reset 2
 ```
@@ -133,7 +136,7 @@ class ExistsVpcStack(cdk.Stack):
 ```
 * https://docs.aws.amazon.com/cdk/latest/guide/context.html
 
-#Bootstrap::
+# Bootstrap::
 ```
 cdk bootstrap --qualifier  second  --profile raj_pahal --trust 600290073582 --lookups true --trust-for-lookup 600290073582  -v --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' 
 
@@ -150,7 +153,7 @@ aws cloudformation create-stack \
 * https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html
 * https://docs.aws.amazon.com/cdk/latest/guide/cli.html
 
-## Best practices
+# Best practices
 
 * CDK applications should be organized into logical units, such as API, database, and monitoring resources, and optionally have a pipeline for automated deployments. 
 * The logical units should be implemented as constructs including the infrastructure (e.g. Amazon S3 buckets, Amazon RDS databases, Amazon VPC network), runtime code (e.g. AWS Lambda functions), and configuration code. 

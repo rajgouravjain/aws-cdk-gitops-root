@@ -43,3 +43,16 @@ command.
  * `cdk docs`        open CDK documentation
 
 Enjoy!
+
+# Testing Infra
+
+## Unit testing
+Unit tests are available in tests/unit/ directory
+
+[ Setup Unit test env ](UNIT_TEST.md)
+
+
+## Integration testing
+
+Integration tests are available in tests/integration directory
+[ Setup Integration test env ](INTEGRATION_TEST.md)

@@ -26,7 +26,7 @@ aws cloudformation create-stack \
 * https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html
 * https://docs.aws.amazon.com/cdk/latest/guide/cli.html
 
-Read [ setup application ] (SETUP.md)
+Read [ setup application ](SETUP.md)
 
 #AWS-CDK terminology and their beief
 

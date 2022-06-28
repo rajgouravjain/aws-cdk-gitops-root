@@ -1,5 +1,7 @@
 import json
 import pytest
+import aws_cdk as core
+import aws_cdk.assertions as assertions
 
 from aws_cdk import App, Stack
 from constructs import Construct
@@ -23,3 +25,14 @@ def test_sqs_queue_created():
 
 def test_sns_topic_created():
     assert("AWS::SNS::Topic" in get_template())
+
+
+def test_sqs_queue_created_without_get_template():
+    app = core.App()
+    stack = HelloWorldStack(app, "hello-world")
+    template = assertions.Template.from_stack(stack)
+
+#     template.has_resource_properties("AWS::SQS::Queue", {
+#         "VisibilityTimeout": 300
+#     })
+

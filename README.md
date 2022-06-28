@@ -3,16 +3,32 @@
 https://aws.amazon.com/blogs/developer/announcing-aws-cloud-development-kit-v2-developer-preview/
 
 # aws-cdk installation
-to install v1 version
+To install v2 version
 ```
 npm install -g aws-cdk
 ```
-To install v2 version
-```
-npm install -g aws-cdk@next
-```
 For python aws cdk installation please check requirements.txt file
 
+# Bootstrap::
+```
+cdk bootstrap --qualifier  YourQualifier  --profile prod --trust 600290073582 --lookups true --trust-for-lookup 600290073582  -v --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess'
+
+cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2  --profile prod
+cdk bootstrap --profile prod
+```
+```
+cdk bootstrap --show-template > bootstrap-template.yaml
+aws cloudformation create-stack \
+  --stack-name CDKToolkit \
+  --template-body file://bootstrap-template.yaml
+```
+
+* https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html
+* https://docs.aws.amazon.com/cdk/latest/guide/cli.html
+
+Read SETUP.md to setup application 
+
+#AWS-CDK terminology and their beief
 
 # App:
 ```
@@ -136,19 +152,6 @@ class ExistsVpcStack(cdk.Stack):
 ```
 * https://docs.aws.amazon.com/cdk/latest/guide/context.html
 
-# Bootstrap::
-```
-cdk bootstrap --qualifier  second  --profile raj_pahal --trust 600290073582 --lookups true --trust-for-lookup 600290073582  -v --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' 
-
-cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
-cdk bootstrap --profile prod
-```
-```
-cdk bootstrap --show-template > bootstrap-template.yaml
-aws cloudformation create-stack \
-  --stack-name CDKToolkit \
-  --template-body file://bootstrap-template.yaml
-```
 
 * https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html
 * https://docs.aws.amazon.com/cdk/latest/guide/cli.html

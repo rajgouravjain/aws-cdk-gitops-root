@@ -28,7 +28,7 @@ aws cloudformation create-stack \
 
 Read [ setup application ](SETUP.md)
 
-#AWS-CDK terminology and their beief
+# AWS-CDK terminology and their beief
 
 # App:
 ```

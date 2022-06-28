@@ -10,6 +10,6 @@ from aws_cdk import aws_sns as sns
 class HelloWorldStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        jobs_queue = sqs.Queue(self, "jobs-queue")
-        bucket = s3.Bucket(self, "my_first_bucket", versioned=True)
-        topic = sns.Topic(self, "topic")
+        jobs_queue = sqs.Queue(self, "jobs-queue",queue_name="jobs-queue")
+        bucket = s3.Bucket(self, "my_first_bucket",bucket_name="my-first-bucket-rj", versioned=True)
+        topic = sns.Topic(self, "topic",topic_name="topic")
